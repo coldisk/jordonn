@@ -24,7 +24,7 @@ int lire(char *chaine, int longueur);
 typedef struct dirent dirent;
 void parcours(char *dir_name);
 int isDir(const char* name);
-char* pathTo_jdn_cfg = "./jdn.jcg";
+char* pathTo_jdn_cfg = "/home/coldisk/Documents/langC/jfo_projet/NewFolder/jordonn/jdn.jcg";
 
 int main(int argc, char* argv[])
 {
@@ -33,6 +33,7 @@ int main(int argc, char* argv[])
     lire(dossierDonne, 255);
     printf("Le dossier donné est %s \n", dossierDonne);
     parcours(dossierDonne);
+    addDirec("test");
 
     return 0;
 }
@@ -96,7 +97,9 @@ void addDirec(char* nameNewDir)
 {
     FILE* jdn_cfg= NULL; 
     jdn_cfg = fopen(pathTo_jdn_cfg, "a");
+    fprintf(jdn_cfg,"[%s]\n[/%s]\n", nameNewDir, nameNewDir);
     fclose(jdn_cfg);
+    
 }
 
 
